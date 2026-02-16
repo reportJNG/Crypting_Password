@@ -27,32 +27,32 @@ export default function Topbar() {
 
         <div className="flex items-center gap-1 md:gap-2">
           <button
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="User lock"
           >
             <UserLockIcon className="h-5 w-5" />
           </button>
 
           <button
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="Scroll text"
           >
             <ScrollTextIcon className="h-5 w-5" />
           </button>
 
           <button
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="Settings"
           >
             <Settings className="h-5 w-5" />
           </button>
 
-          <div>
+          <div className="ml-1 cursor-pointer">
             <ThemeToggle />
           </div>
 
           <button
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive cursor-pointer"
             aria-label="Log out"
           >
             <LogOut className="h-5 w-5" />
