@@ -30,7 +30,7 @@ export default function Topbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground "
+            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="User lock"
           >
             <UserLockIcon className="h-5 w-5" />
@@ -39,7 +39,7 @@ export default function Topbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="Scroll text"
           >
             <ScrollTextIcon className="h-5 w-5" />
@@ -48,7 +48,7 @@ export default function Topbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+            className="text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="Settings"
           >
             <Settings className="h-5 w-5" />
@@ -59,7 +59,7 @@ export default function Topbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
+            className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive cursor-pointer"
             aria-label="Log out"
           >
             <LogOut className="h-5 w-5" />
