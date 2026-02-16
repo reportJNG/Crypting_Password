@@ -11,21 +11,22 @@ export default function Main() {
       <header>
         <Topbar />
       </header>
-      {!creating && (
-        <main>
-          <div>
-            <Create
-              cancle={() => setCreating((prev) => !prev)}
-              create={submitform}
-            />
-          </div>
-        </main>
-      )}
+      {!creating && <main></main>}
+
       <footer>
         <div onClick={() => setCreating((prev) => !prev)}>
           <MousePointerClickIcon />
         </div>
       </footer>
+
+      {creating && (
+        <div>
+          <Create
+            cancle={() => setCreating((prev) => !prev)}
+            create={submitform}
+          />
+        </div>
+      )}
     </div>
   );
 }

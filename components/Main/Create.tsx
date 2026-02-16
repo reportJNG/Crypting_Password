@@ -6,9 +6,13 @@ import {
   LockIcon,
   Send,
   SquareUserIcon,
-  UserCircle2,
   X,
 } from "lucide-react";
+
+import { Create_Password, create_password } from "@/schemas/createnew_password";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 interface Createprops {
   cancle: () => void;
@@ -16,6 +20,31 @@ interface Createprops {
 }
 
 export default function Create({ cancle, create }: Createprops) {
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors, isSubmitting },
+  } = useForm<Create_Password>({
+    resolver: zodResolver(create_password),
+    mode: "onSubmit",
+    reValidateMode: "onChange",
+    defaultValues: {
+      name: "",
+      password: "",
+    },
+  });
+  const [visible, Setvisible] = useState<{ name: boolean; password: boolean }>({
+    name: false,
+    password: false,
+  });
+
+  const HandleSubmit = () => {
+    if (errors.name && errors.password) {
+    }
+    create();
+  };
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-background rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-border">
@@ -37,7 +66,7 @@ export default function Create({ cancle, create }: Createprops) {
           </button>
         </div>
 
-        <form onSubmit={create} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit(HandleSubmit)} className="p-6 space-y-6">
           <div className="space-y-2">
             <h4 className="text-lg font-medium text-foreground">
               Create New Password
@@ -54,10 +83,18 @@ export default function Create({ cancle, create }: Createprops) {
                 Name
               </label>
               <Input
+                {...register("name")}
+                onChange={(e) => {
+                  const cleaner = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
+                  e.target.value = cleaner;
+                }}
+                min={3}
+                max={20}
                 placeholder="Enter your name"
                 className="w-full"
                 required
               />
+              {visible.name && errors.name && <p>{errors.name.message}</p>}
             </div>
 
             <div className="space-y-2">
@@ -66,11 +103,21 @@ export default function Create({ cancle, create }: Createprops) {
                 Password
               </label>
               <Input
+                {...register("password")}
+                onChange={(e) => {
+                  const cleaner = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
+                  e.target.value = cleaner;
+                }}
+                min={8}
+                max={16}
                 type="password"
                 placeholder="Enter your password"
                 className="w-full"
                 required
               />
+              {visible.password && errors.password && (
+                <p>{errors.password.message}</p>
+              )}
             </div>
           </div>
 
@@ -86,6 +133,7 @@ export default function Create({ cancle, create }: Createprops) {
             </Button>
             <Button
               type="button"
+              disabled={isSubmitting}
               onClick={cancle}
               variant="outline"
               className="flex-1 border-border hover:bg-muted transition-colors cursor-pointer"
