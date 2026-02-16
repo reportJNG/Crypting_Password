@@ -3,6 +3,7 @@ import { Input } from "../ui/input";
 import {
   CornerDownLeft,
   KeySquare,
+  LockIcon,
   Send,
   SquareUserIcon,
   UserCircle2,
@@ -20,8 +21,8 @@ export default function Create({ cancle, create }: Createprops) {
       <div className="bg-background rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-border">
         <div className="flex items-center justify-between p-6 border-b border-border">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-full">
-              <UserCircle2 className="w-6 h-6 text-primary" />
+            <div className="p-2 bg-primary/10 rounded-full ">
+              <LockIcon className="w-6 h-6 text-primary" />
             </div>
             <h2 className="text-xl font-semibold text-foreground">
               Create Password
@@ -29,7 +30,7 @@ export default function Create({ cancle, create }: Createprops) {
           </div>
           <button
             onClick={cancle}
-            className="p-2 hover:bg-muted rounded-full transition-colors"
+            className="p-2 hover:bg-muted rounded-full transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X className="w-5 h-5 text-muted-foreground" />
@@ -76,7 +77,7 @@ export default function Create({ cancle, create }: Createprops) {
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <Button
               type="submit"
-              className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer"
             >
               <span className="flex items-center justify-center gap-2">
                 Submit
@@ -87,7 +88,7 @@ export default function Create({ cancle, create }: Createprops) {
               type="button"
               onClick={cancle}
               variant="outline"
-              className="flex-1 border-border hover:bg-muted transition-colors"
+              className="flex-1 border-border hover:bg-muted transition-colors cursor-pointer"
             >
               <span className="flex items-center justify-center gap-2">
                 Cancel

@@ -5,7 +5,6 @@ import { useState } from "react";
 import Create from "./Create";
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
-  const cancleform = () => {};
   const submitform = () => {};
   return (
     <div>
@@ -15,7 +14,10 @@ export default function Main() {
       {!creating && (
         <main>
           <div>
-            <Create cancle={cancleform} create={submitform} />
+            <Create
+              cancle={() => setCreating((prev) => !prev)}
+              create={submitform}
+            />
           </div>
         </main>
       )}
