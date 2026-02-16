@@ -2,16 +2,21 @@
 import { MousePointerClickIcon } from "lucide-react";
 import Topbar from "./Topbar";
 import { useState } from "react";
+import Create from "./Create";
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
+  const cancleform = () => {};
+  const submitform = () => {};
   return (
     <div>
       <header>
         <Topbar />
       </header>
-      {creating && (
+      {!creating && (
         <main>
-          <div></div>
+          <div>
+            <Create cancle={cancleform} create={submitform} />
+          </div>
         </main>
       )}
       <footer>

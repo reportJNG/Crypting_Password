@@ -1,18 +1,101 @@
-import { X } from "lucide-react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import {
+  CornerDownLeft,
+  KeySquare,
+  Send,
+  SquareUserIcon,
+  UserCircle2,
+  X,
+} from "lucide-react";
+
 interface Createprops {
   cancle: () => void;
   create: () => void;
 }
+
 export default function Create({ cancle, create }: Createprops) {
   return (
-    <div>
-      <div>
-        <X />
-      </div>
-      <div>
-        <div>
-          <h4>Create New</h4>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-background rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-border">
+        <div className="flex items-center justify-between p-6 border-b border-border">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-primary/10 rounded-full">
+              <UserCircle2 className="w-6 h-6 text-primary" />
+            </div>
+            <h2 className="text-xl font-semibold text-foreground">
+              Create Password
+            </h2>
+          </div>
+          <button
+            onClick={cancle}
+            className="p-2 hover:bg-muted rounded-full transition-colors"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5 text-muted-foreground" />
+          </button>
         </div>
+
+        <form onSubmit={create} className="p-6 space-y-6">
+          <div className="space-y-2">
+            <h4 className="text-lg font-medium text-foreground">
+              Create New Password
+            </h4>
+            <p className="text-sm text-muted-foreground">
+              Protect your data with a password only you can access
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                <SquareUserIcon className="w-4 h-4 text-muted-foreground" />
+                Name
+              </label>
+              <Input
+                placeholder="Enter your name"
+                className="w-full"
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                <KeySquare className="w-4 h-4 text-muted-foreground" />
+                Password
+              </label>
+              <Input
+                type="password"
+                placeholder="Enter your password"
+                className="w-full"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 pt-4">
+            <Button
+              type="submit"
+              className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              <span className="flex items-center justify-center gap-2">
+                Submit
+                <Send className="w-4 h-4" />
+              </span>
+            </Button>
+            <Button
+              type="button"
+              onClick={cancle}
+              variant="outline"
+              className="flex-1 border-border hover:bg-muted transition-colors"
+            >
+              <span className="flex items-center justify-center gap-2">
+                Cancel
+                <CornerDownLeft className="w-4 h-4" />
+              </span>
+            </Button>
+          </div>
+        </form>
       </div>
     </div>
   );
