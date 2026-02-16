@@ -1,3 +1,11 @@
+import Topbar from "./Topbar";
+
 export default function Main() {
-  return <div></div>;
+  return (
+    <div>
+      <header>
+        <Topbar />
+      </header>
+    </div>
+  );
 }
