@@ -47,7 +47,7 @@ export default function Topbar() {
             <Settings className="h-5 w-5" />
           </button>
 
-          <div className="ml-1">
+          <div>
             <ThemeToggle />
           </div>
 
