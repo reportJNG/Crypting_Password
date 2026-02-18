@@ -158,7 +158,7 @@ export default function Create({ cancle }: Createprops) {
               disabled={isSubmitting}
               onClick={cancle}
               variant="outline"
-              className="flex-1 border-border  transition-colors cursor-pointer hover:bg-red-600 hover:text-white"
+              className="flex-1 border-[hsl(var(--border))] transition-colors cursor-pointer hover:bg-red-600 hover:text-white"
             >
               <span className="flex items-center justify-center gap-2">
                 Cancel
