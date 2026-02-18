@@ -59,10 +59,10 @@ export default function Create({ cancle, create }: Createprops) {
           </div>
           <button
             onClick={cancle}
-            className="p-2 hover:bg-muted rounded-full transition-colors cursor-pointer"
+            className="p-2 hover:bg-muted rounded-full transition-colors cursor-pointer "
             aria-label="Close"
           >
-            <X className="w-5 h-5 text-muted-foreground" />
+            <X className="w-5 h-5 text-muted-foreground hover:text-red-700" />
           </button>
         </div>
 
@@ -110,7 +110,7 @@ export default function Create({ cancle, create }: Createprops) {
                 }}
                 min={8}
                 max={16}
-                type="password"
+                type="text"
                 placeholder="Enter your password"
                 className="w-full"
                 required
@@ -127,7 +127,7 @@ export default function Create({ cancle, create }: Createprops) {
               className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer"
             >
               <span className="flex items-center justify-center gap-2">
-                Submit
+                Generate
                 <Send className="w-4 h-4" />
               </span>
             </Button>
@@ -136,7 +136,7 @@ export default function Create({ cancle, create }: Createprops) {
               disabled={isSubmitting}
               onClick={cancle}
               variant="outline"
-              className="flex-1 border-border hover:bg-muted transition-colors cursor-pointer"
+              className="flex-1 border-border  transition-colors cursor-pointer hover:bg-red-600 hover:text-white"
             >
               <span className="flex items-center justify-center gap-2">
                 Cancel
