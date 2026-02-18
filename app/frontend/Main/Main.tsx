@@ -1,5 +1,5 @@
 "use client";
-import { MousePointerClickIcon } from "lucide-react";
+import { FilePlusCornerIcon } from "lucide-react";
 import Topbar from "./Topbar";
 import { useState } from "react";
 import Create from "./Create";
@@ -34,12 +34,12 @@ export default function Main() {
           </main>
         )}
 
-        <footer className="fixed bottom-0 left-0 right-0 p-4 z-50 pointer-events-none">
+        <footer className="fixed bottom-0 right-0 p-6 z-50 pointer-events-none">
           <div
             onClick={() => setCreating((prev) => !prev)}
             className="w-14 h-14 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center cursor-pointer transition-all hover:scale-110 active:scale-95 shadow-lg mx-auto pointer-events-auto"
           >
-            <MousePointerClickIcon className="w-6 h-6" />
+            <FilePlusCornerIcon className="w-6 h-6" />
           </div>
         </footer>
 
