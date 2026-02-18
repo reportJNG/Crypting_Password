@@ -3,12 +3,17 @@ import {
   LogOut,
   ScrollTextIcon,
   Settings,
-  UserLockIcon,
+  UserIcon,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "../settings/Theme-Toggle";
 
-export default function Topbar() {
+interface Topbarprops {
+  setSettings: React.Dispatch<React.SetStateAction<boolean>>;
+  setTerms: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Topbar({ setSettings, setTerms }: Topbarprops) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
@@ -32,8 +37,11 @@ export default function Topbar() {
             size="icon"
             className="text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="User lock"
+            onClick={() =>
+              window.open("https://remalihamza.vercel.app/", "_blank")
+            }
           >
-            <UserLockIcon className="h-5 w-5" />
+            <UserIcon className="h-5 w-5" />
           </Button>
 
           <Button
@@ -41,6 +49,7 @@ export default function Topbar() {
             size="icon"
             className="text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="Scroll text"
+            onClick={() => setTerms((prev) => !prev)}
           >
             <ScrollTextIcon className="h-5 w-5" />
           </Button>
@@ -50,6 +59,7 @@ export default function Topbar() {
             size="icon"
             className="text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer"
             aria-label="Settings"
+            onClick={() => setSettings((prev) => !prev)}
           >
             <Settings className="h-5 w-5" />
           </Button>
@@ -61,6 +71,9 @@ export default function Topbar() {
             size="icon"
             className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive cursor-pointer"
             aria-label="Log out"
+            onClick={() =>
+              window.open("https://remalihamza.vercel.app/", "_self")
+            }
           >
             <LogOut className="h-5 w-5" />
           </Button>
