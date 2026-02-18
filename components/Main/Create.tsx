@@ -97,6 +97,7 @@ export default function Create({ cancle, create }: Createprops) {
                 min={3}
                 max={20}
                 placeholder="Enter your name"
+                title="Enter your name"
                 className="w-full"
                 required
               />
@@ -123,6 +124,7 @@ export default function Create({ cancle, create }: Createprops) {
                 max={16}
                 type="text"
                 placeholder="Enter your password"
+                title="Enter your password"
                 className="w-full"
                 required
               />
