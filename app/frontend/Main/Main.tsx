@@ -9,7 +9,7 @@ export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
   const [settings, setSettings] = useState<boolean>(false);
   const [terms, setTerms] = useState<boolean>(false);
-  const submitform = () => {};
+
   return (
     <div>
       <header>
@@ -46,10 +46,7 @@ export default function Main() {
         {/** Creating */}
         {creating && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm">
-            <Create
-              cancle={() => setCreating((prev) => !prev)}
-              create={submitform}
-            />
+            <Create cancle={() => setCreating((prev) => !prev)} />
           </div>
         )}
 

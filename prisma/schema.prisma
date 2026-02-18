@@ -1,13 +1,14 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../lib/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-model passwords {
+model Passwords {
   id         String    @id(map: "users_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name       String
   password   String
