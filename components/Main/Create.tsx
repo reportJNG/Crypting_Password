@@ -7,16 +7,15 @@ import {
   Send,
   SquareUserIcon,
   X,
+  AlertTriangle,
 } from "lucide-react";
-
 import { Create_Password, create_password } from "@/schemas/createnew_password";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 
 interface Createprops {
   cancle: () => void;
-  create: () => void;
+  create: (data: Create_Password) => void;
 }
 
 export default function Create({ cancle, create }: Createprops) {
@@ -34,15 +33,22 @@ export default function Create({ cancle, create }: Createprops) {
       password: "",
     },
   });
-  const [visible, Setvisible] = useState<{ name: boolean; password: boolean }>({
-    name: false,
-    password: false,
-  });
+  const nameRegister = register("name");
+  const passwordRegister = register("password");
 
-  const HandleSubmit = () => {
-    if (errors.name && errors.password) {
+  const HandleSubmit = (data: Create_Password) => {
+    if (
+      data.name.length < 3 ||
+      data.password.length < 8 ||
+      data.name.length > 20 ||
+      data.password.length > 16
+    ) {
+      //message error
+    } else {
+      create(data);
+      resetField("name");
+      resetField("password");
     }
-    create();
   };
 
   return (
@@ -83,10 +89,10 @@ export default function Create({ cancle, create }: Createprops) {
                 Name
               </label>
               <Input
-                {...register("name")}
+                {...nameRegister}
                 onChange={(e) => {
-                  const cleaner = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
-                  e.target.value = cleaner;
+                  e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
+                  nameRegister.onChange(e);
                 }}
                 min={3}
                 max={20}
@@ -94,7 +100,12 @@ export default function Create({ cancle, create }: Createprops) {
                 className="w-full"
                 required
               />
-              {visible.name && errors.name && <p>{errors.name.message}</p>}
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                  <AlertTriangle className="w-4 h-4" />
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -103,10 +114,10 @@ export default function Create({ cancle, create }: Createprops) {
                 Password
               </label>
               <Input
-                {...register("password")}
+                {...passwordRegister}
                 onChange={(e) => {
-                  const cleaner = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
-                  e.target.value = cleaner;
+                  e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
+                  passwordRegister.onChange(e);
                 }}
                 min={8}
                 max={16}
@@ -115,8 +126,11 @@ export default function Create({ cancle, create }: Createprops) {
                 className="w-full"
                 required
               />
-              {visible.password && errors.password && (
-                <p>{errors.password.message}</p>
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                  <AlertTriangle className="w-4 h-4" />
+                  {errors.password.message}
+                </p>
               )}
             </div>
           </div>
