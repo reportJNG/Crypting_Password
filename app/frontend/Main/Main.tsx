@@ -7,11 +7,13 @@ import Beams from "../ui/components/Beams";
 
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
+  const [settings, setSettings] = useState<boolean>(false);
+  const [terms, setTerms] = useState<boolean>(false);
   const submitform = () => {};
   return (
     <div>
       <header>
-        <Topbar />
+        <Topbar setSettings={setSettings} setTerms={setTerms} />
       </header>
 
       <div style={{ width: "100%", height: "600px", position: "relative" }}>
@@ -41,6 +43,7 @@ export default function Main() {
           </div>
         </footer>
 
+        {/** Creating */}
         {creating && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm">
             <Create
@@ -48,6 +51,16 @@ export default function Main() {
               create={submitform}
             />
           </div>
+        )}
+
+        {/** Terms */}
+        {terms && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm"></div>
+        )}
+
+        {/** Settings */}
+        {settings && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm"></div>
         )}
       </div>
     </div>
