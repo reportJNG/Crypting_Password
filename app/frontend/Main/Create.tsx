@@ -15,13 +15,14 @@ import {
 } from "@/app/frontend/schemas/createnew_password";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { createnew } from "@/app/backend/Server/Create";
+import { toast } from "sonner";
 
 interface Createprops {
   cancle: () => void;
-  create: (data: Create_Password) => void;
 }
 
-export default function Create({ cancle, create }: Createprops) {
+export default function Create({ cancle }: Createprops) {
   const {
     register,
     handleSubmit,
@@ -36,13 +37,24 @@ export default function Create({ cancle, create }: Createprops) {
       password: "",
     },
   });
+
   const nameRegister = register("name");
   const passwordRegister = register("password");
 
-  const HandleSubmit = (data: Create_Password) => {
-    create(data);
-    cancle();
-    reset();
+  const HandleSubmit = async (data: Create_Password) => {
+    const result = await createnew(data);
+    const id = toast.loading("Generating ...");
+    const time = setTimeout(() => {
+      toast.dismiss(id);
+      cancle();
+      reset();
+      if (result.error) {
+        toast.error(result.error);
+      } else if (result.success) {
+        toast.success(result.success);
+      }
+    }, 2000);
+    return () => clearTimeout(time);
   };
 
   return (

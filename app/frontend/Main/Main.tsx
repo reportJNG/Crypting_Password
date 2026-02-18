@@ -4,27 +4,11 @@ import Topbar from "./Topbar";
 import { useState } from "react";
 import Create from "./Create";
 import Beams from "../ui/components/Beams";
-import { Create_Password } from "../schemas/createnew_password";
-import { createnew } from "@/app/backend/Server/Create";
-import { toast } from "sonner";
 
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
   const [settings, setSettings] = useState<boolean>(false);
   const [terms, setTerms] = useState<boolean>(false);
-  const submitform = async (data: Create_Password) => {
-    const id = toast.loading("Generating ...");
-    const result = await createnew(data);
-    const time = setTimeout(() => {
-      toast.dismiss(id);
-      if (result.error) {
-        toast.error(result.error);
-      } else if (result.success) {
-        toast.success(result.success);
-      }
-    }, 2000);
-    return () => clearTimeout(time);
-  };
   return (
     <div>
       <header>
@@ -61,10 +45,7 @@ export default function Main() {
         {/** Creating */}
         {creating && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm">
-            <Create
-              cancle={() => setCreating((prev) => !prev)}
-              create={submitform}
-            />
+            <Create cancle={() => setCreating((prev) => !prev)} />
           </div>
         )}
 
