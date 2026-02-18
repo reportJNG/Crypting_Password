@@ -9,7 +9,10 @@ import {
   X,
   AlertTriangle,
 } from "lucide-react";
-import { Create_Password, create_password } from "@/schemas/createnew_password";
+import {
+  Create_Password,
+  create_password,
+} from "@/app/frontend/schemas/createnew_password";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

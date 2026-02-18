@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/settings/Theme-Provider";
+import { ThemeProvider } from "@/app/frontend/settings/Theme-Provider";
 export const metadata: Metadata = {
   title: "Crypt Password",
   description: "Crypt Password",
