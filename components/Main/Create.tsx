@@ -38,6 +38,7 @@ export default function Create({ cancle, create }: Createprops) {
 
   const HandleSubmit = (data: Create_Password) => {
     create(data);
+    cancle();
     reset();
   };
 
