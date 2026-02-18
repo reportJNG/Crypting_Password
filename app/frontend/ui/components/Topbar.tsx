@@ -5,8 +5,8 @@ import {
   Settings,
   UserIcon,
 } from "lucide-react";
-import { Button } from "../ui/button";
-import { ThemeToggle } from "../settings/Theme-Toggle";
+import { Button } from "../button";
+import { ThemeToggle } from "../../settings/Theme-Toggle";
 
 interface Topbarprops {
   setSettings: React.Dispatch<React.SetStateAction<boolean>>;

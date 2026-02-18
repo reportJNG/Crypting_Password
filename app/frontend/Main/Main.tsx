@@ -1,6 +1,6 @@
 "use client";
 import { FilePlusCornerIcon } from "lucide-react";
-import Topbar from "./Topbar";
+import Topbar from "../ui/components/Topbar";
 import { useState } from "react";
 import Create from "./Create";
 import Beams from "../ui/components/Beams";
