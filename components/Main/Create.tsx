@@ -22,7 +22,7 @@ export default function Create({ cancle, create }: Createprops) {
   const {
     register,
     handleSubmit,
-    resetField,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<Create_Password>({
     resolver: zodResolver(create_password),
@@ -37,18 +37,8 @@ export default function Create({ cancle, create }: Createprops) {
   const passwordRegister = register("password");
 
   const HandleSubmit = (data: Create_Password) => {
-    if (
-      data.name.length < 3 ||
-      data.password.length < 8 ||
-      data.name.length > 20 ||
-      data.password.length > 16
-    ) {
-      //message error
-    } else {
-      create(data);
-      resetField("name");
-      resetField("password");
-    }
+    create(data);
+    reset();
   };
 
   return (
@@ -94,8 +84,8 @@ export default function Create({ cancle, create }: Createprops) {
                   e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
                   nameRegister.onChange(e);
                 }}
-                min={3}
-                max={20}
+                minLength={3}
+                maxLength={20}
                 placeholder="Enter your name"
                 title="Enter your name"
                 className="w-full"
@@ -120,8 +110,8 @@ export default function Create({ cancle, create }: Createprops) {
                   e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, "");
                   passwordRegister.onChange(e);
                 }}
-                min={8}
-                max={16}
+                minLength={8}
+                maxLength={16}
                 type="text"
                 placeholder="Enter your password"
                 title="Enter your password"
