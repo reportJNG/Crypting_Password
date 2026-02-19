@@ -1,4 +1,4 @@
-import { Copy, DatabaseIcon, Delete } from "lucide-react";
+import { Copy, DatabaseIcon, Trash2Icon } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -106,9 +106,18 @@ export default function List() {
                           aria-label="Copy password"
                           size="icon"
                           variant="ghost"
-                          className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                          className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer"
                         >
                           <Copy className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          onClick={() => handleCopy(val.password)}
+                          aria-label="Copy password"
+                          size="icon"
+                          variant="ghost"
+                          className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer"
+                        >
+                          <Trash2Icon className="h-4 w-4" />
                         </Button>
                       </div>
                     </div>
@@ -135,11 +144,6 @@ export default function List() {
                         </time>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <button>
-                      <Delete />
-                    </button>
                   </div>
                 </CardContent>
               </Card>

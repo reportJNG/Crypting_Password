@@ -28,7 +28,7 @@ export default function Main() {
             beamWidth={3}
             beamHeight={30}
             beamNumber={20}
-            lightColor="#2563EB"
+            lightColor="#FFFFFF"
             speed={2}
             noiseIntensity={1.75}
             scale={0.2}
