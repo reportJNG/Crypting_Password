@@ -1,9 +1,16 @@
 "use server";
 import { prisma } from "@/lib/prisma";
-import { Create_Password } from "@/app/frontend/schemas/createnew_password";
+import { Passwords } from "@/lib/generated/prisma";
 
-export async function createnew(data: Create_Password) {
-  if (!data) {
-    return { error: "No data provided" };
+export async function getAllPasswords(): Promise<{
+  data: Passwords[];
+  error?: string;
+}> {
+  try {
+    const data: Passwords[] = await prisma.passwords.findMany();
+    return { data };
+  } catch (err) {
+    console.error(err);
+    return { data: [], error: "Failed to fetch" };
   }
 }
