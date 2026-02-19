@@ -9,12 +9,25 @@ import {
 } from "../ui/card";
 import { Passwords } from "@/lib/generated/prisma";
 import { Button } from "../ui/button";
-import { useEffect } from "react";
-
-const data: Passwords[] = [];
+import { useEffect, useState } from "react";
+import { getAllPasswords } from "@/app/backend/Server/Getall";
+import { toast } from "sonner";
 
 export default function List() {
-  useEffect(() => {}, []);
+  const [data, setData] = useState<Passwords[]>([]);
+
+  useEffect(() => {
+    const fetchPasswords = async () => {
+      const result = await getAllPasswords();
+      if (result.error) {
+        toast.error("Failed to Fetch ");
+      } else {
+        setData(result.data);
+      }
+    };
+
+    fetchPasswords(); // call it
+  }, []);
 
   return (
     <div className="container  ">
