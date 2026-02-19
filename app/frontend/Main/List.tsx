@@ -13,10 +13,10 @@ import { useEffect, useState } from "react";
 import { getAllPasswords } from "@/app/backend/Server/Getall";
 import { toast } from "sonner";
 import { Delete_password } from "@/app/backend/Server/Delete";
-import { useRouter } from "next/navigation";
+
 export default function List() {
   const [data, setData] = useState<Passwords[]>([]);
-  const routes = useRouter();
+
   useEffect(() => {
     const fetchPasswords = async () => {
       const result = await getAllPasswords();
@@ -42,7 +42,6 @@ export default function List() {
   const handleDelete = async (id: string) => {
     const ids = toast.loading("Deleting ...");
     const result = await Delete_password(id);
-
     const time = setTimeout(() => {
       toast.dismiss(ids);
       if (result.error) {

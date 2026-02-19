@@ -14,7 +14,7 @@ export async function Delete_password(
     });
 
     return { success: "Deleted successfully" };
-  } catch (error) {
+  } catch {
     return { error: "Failed to Fetch" };
   }
 }

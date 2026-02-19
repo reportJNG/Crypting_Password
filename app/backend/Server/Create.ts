@@ -22,7 +22,7 @@ export async function createnew(data: Create_Password) {
       data: { name, password },
     });
     return { success: "Generated Successfully" };
-  } catch (err) {
+  } catch {
     return { error: "Something went wrong" };
   }
 }
