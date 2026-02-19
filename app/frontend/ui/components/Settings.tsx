@@ -23,13 +23,20 @@ export default function Settings({ close }: Settingsprops) {
 
         <div className="p-6 space-y-6"></div>
 
-        <div className="sticky bottom-0 flex justify-end p-4 border-t bg-card/95 backdrop-blur supports-backdrop-filter:bg-card/75">
+        <div className="sticky bottom-0 flex justify-end gap-2 p-4 border-t bg-card/95 backdrop-blur supports-backdrop-filter:bg-card/75">
+          <Button
+            onClick={close}
+            variant="outline"
+            className="min-w-25 cursor-pointer"
+          >
+            Close
+          </Button>
           <Button
             onClick={close}
             variant="default"
             className="min-w-25 cursor-pointer"
           >
-            Got it
+            Save
           </Button>
         </div>
       </div>
