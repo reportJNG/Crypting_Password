@@ -1,7 +1,7 @@
 "use server";
 import { prisma } from "@/lib/prisma";
 import { Create_Password } from "@/app/frontend/schemas/createnew_password";
-
+import { hashPassword } from "@/lib/password";
 export async function createnew(data: Create_Password) {
   if (!data) {
     return { error: "No data provided" };
@@ -16,10 +16,11 @@ export async function createnew(data: Create_Password) {
   if (password.length < 8 || password.length > 16) {
     return { error: "Password must be between 8 and 16 characters" };
   }
-
   try {
+    const hashedpassword = await hashPassword(password);
+
     await prisma.passwords.create({
-      data: { name, password },
+      data: { name, password: hashedpassword },
     });
     return { success: "Generated Successfully" };
   } catch {
