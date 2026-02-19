@@ -4,6 +4,7 @@ import Topbar from "../ui/components/Topbar";
 import { useState } from "react";
 import Create from "./Create";
 import Beams from "../ui/components/Beams";
+import Terms from "../ui/components/Terms";
 
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
@@ -51,7 +52,9 @@ export default function Main() {
 
         {/** Terms */}
         {terms && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm"></div>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm">
+            <Terms close={() => setTerms((prev) => !prev)} />
+          </div>
         )}
 
         {/** Settings */}
