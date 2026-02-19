@@ -26,12 +26,12 @@ Most people reuse weak passwords because strong ones are impossible to remember.
 
 **Crypting Password** solves this differently — no vault, no master password, no browser extensions.
 
-| Without Crypting | With Crypting |
-|---|---|
-| `password123` for everything | `$2b$12$xK9...` — cryptographically strong |
-| One breach = everything exposed | Each label produces a unique hash |
-| Have to remember complex strings | Just remember `"gmail"` or `"bank"` |
-| Locked to a device or app | Works anywhere, anytime |
+| Without Crypting                 | With Crypting                              |
+| -------------------------------- | ------------------------------------------ |
+| `password123` for everything     | `$2b$12$xK9...` — cryptographically strong |
+| One breach = everything exposed  | Each label produces a unique hash          |
+| Have to remember complex strings | Just remember `"gmail"` or `"bank"`        |
+| Locked to a device or app        | Works anywhere, anytime                    |
 
 ---
 
@@ -43,7 +43,7 @@ Most people reuse weak passwords because strong ones are impossible to remember.
                 ▼
     ┌─────────────────────┐
     │   Next.js Server    │  ← 'use server' action
-    │   bcrypt(label, 12) │
+    │   argon(label, 12) │
     └─────────────────────┘
                 │
                 ▼
@@ -86,27 +86,27 @@ Crypting_Password/
 
 ```typescript
 // app/actions.ts
-'use server'
+"use server";
 
-import { prisma } from '@/lib/prisma'
-import { hash } from 'bcrypt'
+import { prisma } from "@/lib/prisma";
+import { hash } from "bcrypt";
 
 export async function generatePassword(label: string) {
   // Hash the label server-side — bcrypt with salt rounds: 12
-  const hashed = await hash(label, 12)
+  const hashed = await hash(label, 12);
 
   // Persist via Prisma — no raw SQL needed
   await prisma.password.upsert({
-    where:  { label },
+    where: { label },
     create: { label, hash: hashed },
     update: {},
-  })
+  });
 
-  return hashed
+  return hashed;
 }
 
 export async function getPassword(label: string) {
-  return prisma.password.findUnique({ where: { label } })
+  return prisma.password.findUnique({ where: { label } });
 }
 ```
 
@@ -116,16 +116,16 @@ The client calls `generatePassword()` like a regular function — no API, no `fe
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology | Why |
-|---|---|---|
-| **Framework** | Next.js 15 (App Router) | Server Actions, file-based routing, zero-config deploy |
-| **Backend** | `'use server'` Server Actions | No separate API server needed |
-| **ORM** | Prisma (latest) | Type-safe DB access, auto migrations |
-| **Database** | PostgreSQL | Reliable, Vercel-compatible |
-| **Hashing** | bcrypt (salt: 12) | Industry-standard password hashing |
-| **Language** | TypeScript | End-to-end type safety |
-| **Styling** | Tailwind CSS + shadcn/ui | Fast, accessible, composable UI |
-| **Deployment** | Vercel | Zero-config, edge network |
+| Layer          | Technology                    | Why                                                    |
+| -------------- | ----------------------------- | ------------------------------------------------------ |
+| **Framework**  | Next.js 15 (App Router)       | Server Actions, file-based routing, zero-config deploy |
+| **Backend**    | `'use server'` Server Actions | No separate API server needed                          |
+| **ORM**        | Prisma (latest)               | Type-safe DB access, auto migrations                   |
+| **Database**   | PostgreSQL                    | Reliable, Vercel-compatible                            |
+| **Hashing**    | bcrypt (salt: 12)             | Industry-standard password hashing                     |
+| **Language**   | TypeScript                    | End-to-end type safety                                 |
+| **Styling**    | Tailwind CSS + shadcn/ui      | Fast, accessible, composable UI                        |
+| **Deployment** | Vercel                        | Zero-config, edge network                              |
 
 ---
 
@@ -212,6 +212,6 @@ git push origin feature/your-idea
 
 Made by [reportJNG](https://github.com/reportJNG)
 
-*Next.js · Prisma · TypeScript · Vercel*
+_Next.js · Prisma · TypeScript · Vercel_
 
 </div>
