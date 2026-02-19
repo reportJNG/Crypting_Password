@@ -1,6 +1,5 @@
-import { X, Shield, Lock, CheckCircle, Info } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "../button";
-import { Card, CardContent } from "@/components/ui/card";
 
 interface Settingsprops {
   close: () => void;
