@@ -15,6 +15,7 @@ const data: Passwords[] = [];
 
 export default function List() {
   useEffect(() => {}, []);
+
   return (
     <div className="container  ">
       <Card className="w-full border border-border bg-white/20 backdrop-blur-sm ">
