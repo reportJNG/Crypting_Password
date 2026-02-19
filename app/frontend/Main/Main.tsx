@@ -5,6 +5,7 @@ import { useState } from "react";
 import Create from "./Create";
 import Beams from "../ui/components/Beams";
 import Terms from "../ui/components/Terms";
+import Settings from "../ui/components/Settings";
 
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
@@ -59,7 +60,9 @@ export default function Main() {
 
         {/** Settings */}
         {settings && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm"></div>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4  backdrop-blur-sm">
+            <Settings close={() => setSettings((prev) => !prev)} />
+          </div>
         )}
       </div>
     </div>
