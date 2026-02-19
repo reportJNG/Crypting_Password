@@ -12,10 +12,11 @@ import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
 import { getAllPasswords } from "@/app/backend/Server/Getall";
 import { toast } from "sonner";
-
+import { Delete_password } from "@/app/backend/Server/Delete";
+import { useRouter } from "next/navigation";
 export default function List() {
   const [data, setData] = useState<Passwords[]>([]);
-
+  const routes = useRouter();
   useEffect(() => {
     const fetchPasswords = async () => {
       const result = await getAllPasswords();
@@ -38,7 +39,24 @@ export default function List() {
     }
   };
 
-  const handleDelete = async (id: string) => {};
+  const handleDelete = async (id: string) => {
+    const ids = toast.loading("Deleting ...");
+    const result = await Delete_password(id);
+
+    const time = setTimeout(() => {
+      toast.dismiss(ids);
+      if (result.error) {
+        toast.error(result.error);
+      } else if (result.success) {
+        toast.success(result.success);
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }, 2000);
+
+    return () => clearTimeout(time);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -114,7 +132,7 @@ export default function List() {
                           <Copy className="h-4 w-4" />
                         </Button>
                         <Button
-                          onClick={() => handleCopy(val.password)}
+                          onClick={() => handleDelete(val.id)}
                           aria-label="Delete"
                           title="Delete"
                           size="icon"
