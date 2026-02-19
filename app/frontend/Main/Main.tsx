@@ -7,6 +7,7 @@ import Beams from "../ui/components/Beams";
 import Terms from "../ui/components/Terms";
 import Settings from "../ui/components/Settings";
 import { Card, CardContent } from "@/app/frontend/ui/card";
+import List from "./List";
 
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
@@ -81,7 +82,9 @@ export default function Main() {
                   {/* List Content */}
                   {showList && (
                     <div className="mt-6 pt-6 border-t border-border">
-                      <div className="grid gap-3"></div>
+                      <div className="grid gap-3">
+                        <List></List>
+                      </div>
                     </div>
                   )}
                 </CardContent>
