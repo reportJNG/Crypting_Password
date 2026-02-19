@@ -27,7 +27,7 @@ export default function Main() {
             beamWidth={3}
             beamHeight={30}
             beamNumber={20}
-            lightColor="#ffffff"
+            lightColor="#2563EB"
             speed={2}
             noiseIntensity={1.75}
             scale={0.2}
@@ -41,12 +41,12 @@ export default function Main() {
             <div className="max-w-4xl mx-auto space-y-8">
               {/* Welcome Section */}
               <div className="mb-12 text-center space-y-4">
-                <h1 className="text-5xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                <h1 className="text-5xl font-bold tracking-tight text-white">
                   Welcome
                 </h1>
 
                 <div className="max-w-xl mx-auto">
-                  <p className="text-lg text-muted-foreground border-t border-b border-border/50 py-4">
+                  <p className="text-lg text-muted-foreground  py-4">
                     Your passwords are securely hashed and stored locally,
                     ensuring maximum protection for your digital life.
                   </p>
