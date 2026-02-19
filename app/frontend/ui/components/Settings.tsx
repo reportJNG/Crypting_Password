@@ -2,6 +2,7 @@ import { X } from "lucide-react";
 import { Button } from "../button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { toast } from "sonner";
 
 interface Settingsprops {
   close: () => void;
@@ -104,7 +105,10 @@ export default function Settings({ close }: Settingsprops) {
             Cancel
           </Button>
           <Button
-            onClick={close}
+            onClick={() => {
+              toast.success("Save Successfully");
+              close();
+            }}
             variant="default"
             className="min-w-24 cursor-pointer"
           >

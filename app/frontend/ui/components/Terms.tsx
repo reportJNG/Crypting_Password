@@ -1,6 +1,6 @@
 import { X, Shield, Lock, CheckCircle, Info } from "lucide-react";
 import { Button } from "../button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/app/frontend/ui/card";
 
 interface TermsProps {
   close: () => void;

@@ -6,7 +6,7 @@ import Create from "./Create";
 import Beams from "../ui/components/Beams";
 import Terms from "../ui/components/Terms";
 import Settings from "../ui/components/Settings";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/app/frontend/ui/card";
 
 export default function Main() {
   const [creating, setCreating] = useState<boolean>(false);
@@ -81,12 +81,7 @@ export default function Main() {
                   {/* List Content */}
                   {showList && (
                     <div className="mt-6 pt-6 border-t border-border">
-                      <div className="grid gap-3">
-                        {/* Placeholder for list items */}
-                        <p className="text-sm text-muted-foreground text-center py-8">
-                          No hidden items to display
-                        </p>
-                      </div>
+                      <div className="grid gap-3"></div>
                     </div>
                   )}
                 </CardContent>
@@ -102,7 +97,7 @@ export default function Main() {
             className="group relative w-14 h-14 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center cursor-pointer transition-all hover:scale-110 active:scale-95 shadow-lg mx-auto"
             aria-label="Create new"
           >
-            <FilePlusCornerIcon className="w-6 h-6 transition-transform group-hover:rotate-90" />
+            <FilePlusCornerIcon className="w-6 h-6 transition-transform " />
           </button>
         </footer>
 
