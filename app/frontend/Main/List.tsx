@@ -104,6 +104,7 @@ export default function List() {
                         <Button
                           onClick={() => handleCopy(val.password)}
                           aria-label="Copy password"
+                          title="Copy"
                           size="icon"
                           variant="ghost"
                           className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer"
@@ -112,7 +113,8 @@ export default function List() {
                         </Button>
                         <Button
                           onClick={() => handleCopy(val.password)}
-                          aria-label="Copy password"
+                          aria-label="Delete"
+                          title="Delete"
                           size="icon"
                           variant="ghost"
                           className="h-8 w-8 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors cursor-pointer"
