@@ -55,7 +55,7 @@ export default function Main() {
               </div>
 
               {/* Privacy Controls */}
-              <Card className="w-full border-border bg-card/80 backdrop-blur-sm">
+              <Card className="w-full border-border bg-card/80 backdrop-blur-sm ">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
@@ -83,7 +83,7 @@ export default function Main() {
                   {showList && (
                     <div className="mt-6 pt-6 border-t border-border">
                       <div className="grid gap-3">
-                        <List></List>
+                        <List />
                       </div>
                     </div>
                   )}
